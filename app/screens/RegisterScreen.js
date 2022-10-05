@@ -7,11 +7,13 @@ import {
   Keyboard,
   Platform,
   ScrollView,
+  StatusBar
 } from "react-native";
 import { Colors } from "../../config/Colors";
 import { Screens } from "../../config/Screens";
 import Button from "../components/Button";
 import Input from "../components/Input";
+import { StatusBarColor } from "../../config/StatusbarColor";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Loader from "../components/Loader";
@@ -98,6 +100,11 @@ function RegisterScreen({ navigation }) {
   };
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar
+        backgroundColor={Colors.white}
+        barStyle={StatusBarColor.dark}
+      />
+
       <ScrollView>
         <Loader visible={loading} />
         <View style={styles.welcome}>

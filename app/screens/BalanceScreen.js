@@ -1,16 +1,23 @@
-import React from 'react';
-import { View, StyleSheet, SafeAreaView } from 'react-native';
+import React from "react";
+import { View, StyleSheet, SafeAreaView, Text, StatusBar } from "react-native";
+import { Colors } from "../../config/Colors";
+import { StatusBarColor } from "../../config/StatusbarColor";
 
-function BalanceScreen(props) {
-    return (
-        <SafeAreaView> </SafeAreaView>
-    );
+function BalanceScreen({navigation}) {
+  return (
+    <SafeAreaView style={styles.container}>
+        <StatusBar
+        backgroundColor={Colors.white}
+        barStyle={StatusBarColor.dark} />
+      <Text>Balance</Text>
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: Platform.OS === "android" ? 20 : 0,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
 });
 

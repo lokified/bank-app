@@ -1,10 +1,12 @@
 import React from 'react';
-import { View, StyleSheet, SafeAreaView } from "react-native";
+import { View, StyleSheet, SafeAreaView, Text } from "react-native";
 
 
 function StopChequeScreen(props) {
     return (
-        <SafeAreaView> </SafeAreaView>
+        <SafeAreaView>
+            <Text>Stop cheque</Text>
+             </SafeAreaView>
     );
 }
 

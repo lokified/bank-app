@@ -1,10 +1,13 @@
 import React from 'react';
-import { View, StyleSheet, SafeAreaView } from "react-native";
+import { View, StyleSheet, SafeAreaView, Text } from "react-native";
 
 
 function ChangePinScreen(props) {
     return (
-        <SafeAreaView> </SafeAreaView>
+        <SafeAreaView>
+            <Text>Change pin</Text>
+             </SafeAreaView>
+
     );
 }
 

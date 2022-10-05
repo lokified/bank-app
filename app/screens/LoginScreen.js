@@ -6,6 +6,7 @@ import {
   Text,
   Keyboard,
   Platform,
+  StatusBar,
 } from "react-native";
 import { Colors } from "../../config/Colors";
 import { Screens } from "../../config/Screens";
@@ -14,6 +15,7 @@ import Input from "../components/Input";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Loader from "../components/Loader";
+import { StatusBarColor } from "../../config/StatusbarColor";
 
 function LoginScreen({ navigation }) {
   const [inputs, setInputs] = useState({
@@ -83,6 +85,7 @@ function LoginScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar backgroundColor={Colors.white} barStyle={StatusBarColor.dark} />
       <Loader visible={loading} />
       <View style={styles.welcome}>
         <Text
@@ -140,11 +143,10 @@ function LoginScreen({ navigation }) {
             onPress={validate}
           />
 
-          <Text style={{textAlign: 'center', paddingTop: 10}}>or</Text>
+          <Text style={{ textAlign: "center", paddingTop: 10 }}>or</Text>
 
           <Button
             color={Colors.primary}
-            backgroundColor={Colors.white}
             title="Register"
             onPress={() => navigation.navigate(Screens.RegisterScreen)}
           />
@@ -157,8 +159,7 @@ function LoginScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.white,
-    paddingTop: Platform.OS === "android" ? 20 : 0,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   welcome: {
     margin: 20,

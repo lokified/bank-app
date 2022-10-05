@@ -1,10 +1,12 @@
 import React from 'react';
-import { View, StyleSheet, SafeAreaView } from "react-native";
+import { View, StyleSheet, SafeAreaView, Text } from "react-native";
 
 
 function FinancialTipsScreen(props) {
     return (
-        <SafeAreaView> </SafeAreaView>
+        <SafeAreaView>
+            <Text>Finance</Text>
+             </SafeAreaView>
     );
 }
 const styles = StyleSheet.create({
