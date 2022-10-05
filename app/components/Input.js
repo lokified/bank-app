@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, StyleSheet, Text, TextInput } from "react-native";
 import { Colors } from "../../config/Colors";
 
-function Input({ label, error, pin, onFocus = () => {}, ...props }) {
+function Input({label, error, pin, onFocus = () => {}, ...props }) {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
@@ -19,19 +19,18 @@ function Input({ label, error, pin, onFocus = () => {}, ...props }) {
           setIsFocused(false);
         }}
         secureTextEntry={pin}
-        style={{
-          borderBottomWidth: 1.18,
-          padding: 6,
-          color: Colors.secondary,
-          borderColor: error
-            ? Colors.error
-            : isFocused
-            ? Colors.focused
-            : Colors.unFocused,
-            
-        }}
+        style={[
+          styles.input,
+          {
+            borderColor: error
+              ? Colors.error
+              : isFocused
+              ? Colors.focused
+              : Colors.unFocused,
+          },
+        ]}
       />
-      {pin && <Text style={styles.error}>{error}</Text>}
+      {error && <Text style={styles.error}>{error}</Text>}
     </View>
   );
 }
@@ -40,6 +39,11 @@ const styles = StyleSheet.create({
   label: {
     color: Colors.secondary,
     marginTop: 20,
+  },
+  input: {
+    borderBottomWidth: 1.18,
+    padding: 6,
+    color: Colors.secondary,
   },
   error: {
     color: "red",

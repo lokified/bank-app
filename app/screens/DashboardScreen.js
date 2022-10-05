@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Text, SafeAreaView } from "react-native";
 
-function DashboardScreen(props) {
+function DashboardScreen({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       <Text>DashboardScreen</Text>
