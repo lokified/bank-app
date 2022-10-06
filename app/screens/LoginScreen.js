@@ -85,7 +85,7 @@ function LoginScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar backgroundColor={Colors.white} barStyle={StatusBarColor.dark} />
+      <StatusBar backgroundColor="#efefef" barStyle={StatusBarColor.dark} />
       <Loader visible={loading} />
       <View style={styles.welcome}>
         <Text
@@ -141,6 +141,7 @@ function LoginScreen({ navigation }) {
             backgroundColor={Colors.primary}
             title="Login"
             onPress={validate}
+            marginTop={30}
           />
 
           <Text style={{ textAlign: "center", paddingTop: 10 }}>or</Text>

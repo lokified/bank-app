@@ -101,7 +101,7 @@ function RegisterScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar
-        backgroundColor={Colors.white}
+        backgroundColor="#efefef"
         barStyle={StatusBarColor.dark}
       />
 
@@ -170,6 +170,7 @@ function RegisterScreen({ navigation }) {
               backgroundColor={Colors.primary}
               title="Register"
               onPress={validate}
+              marginTop={30}
             />
           </View>
 

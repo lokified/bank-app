@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, StyleSheet, Text, TextInput } from "react-native";
 import { Colors } from "../../config/Colors";
 
-function Input({label, error, pin, onFocus = () => {}, ...props }) {
+function Input({fontSize, label, error, pin, onFocus = () => {}, ...props }) {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
@@ -27,8 +27,10 @@ function Input({label, error, pin, onFocus = () => {}, ...props }) {
               : isFocused
               ? Colors.focused
               : Colors.unFocused,
+            fontSize: fontSize
           },
         ]}
+        cursorColor={Colors.secondary}
       />
       {error && <Text style={styles.error}>{error}</Text>}
     </View>

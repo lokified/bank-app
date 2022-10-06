@@ -10,40 +10,68 @@ import RegisterScreen from "./app/screens/RegisterScreen";
 import StopChequeScreen from "./app/screens/StopChequeScreen";
 import { Screens } from "./config/Screens";
 
-
 export default function App() {
-const Stack = createNativeStackNavigator();
+  const Stack = createNativeStackNavigator();
 
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name={Screens.LoginScreen} component={LoginScreen} />
+      <Stack.Navigator
+        screenOptions={{
+          headerShadowVisible: false,
+        }}
+      >
+        <Stack.Screen
+          name={Screens.LoginScreen}
+          component={LoginScreen}
+          options={{ headerShown: false }}
+        />
 
         <Stack.Screen
           name={Screens.RegisterScreen}
           component={RegisterScreen}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name={Screens.DashboardScreen}
           component={DashboardScreen}
+          options={{ headerShown: false }}
         />
-       
+
         <Stack.Screen
           name={Screens.BalanceScreen}
           component={BalanceScreen}
+          options={{
+            title: "Balance"
+          }}
         />
-        <Stack.Screen name={Screens.DepositScreen} component={DepositScreen} />
+        <Stack.Screen
+          name={Screens.DepositScreen}
+          component={DepositScreen}
+          options={{
+            title: "Deposit",
+          }}
+        />
+
         <Stack.Screen
           name={Screens.StopChequeScreen}
           component={StopChequeScreen}
+          options={{
+            title: "Stop Cheque",
+          }}
         />
         <Stack.Screen
           name={Screens.ChangePinScreen}
           component={ChangePinScreen}
+          options={{
+            title: "Change Pin",
+          }}
         />
         <Stack.Screen
           name={Screens.FinancialTipsScreen}
           component={FinancialTipsScreen}
+          options={{
+            title: "Financial Tips",
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
