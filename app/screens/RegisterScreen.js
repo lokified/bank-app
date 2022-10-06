@@ -7,7 +7,8 @@ import {
   Keyboard,
   Platform,
   ScrollView,
-  StatusBar
+  StatusBar,
+  Alert
 } from "react-native";
 import { Colors } from "../../config/Colors";
 import { Screens } from "../../config/Screens";
@@ -17,6 +18,7 @@ import { StatusBarColor } from "../../config/StatusbarColor";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Loader from "../components/Loader";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 function RegisterScreen({ navigation }) {
   const [inputs, setInputs] = useState({
@@ -68,26 +70,12 @@ function RegisterScreen({ navigation }) {
       navigation.navigate(Screens.LoginScreen);
 
       setloading(false);
-      // let userData = await AsyncStorage.getItem("user");
-
-      // if (userData) {
-      //   userData = JSON.parse(userData);
-
-      //   if (
-      //     inputs.accountNumber == userData.email &&
-      //     inputs.pin == userData.password
-      //   ) {
-      //     AsyncStorage.setItem(
-      //       "user",
-      //       JSON.stringify({ ...userData, loggedIn: true })
-      //     );
-      //     navigation.navigate(Screens.DashboardScreen);
-      //   } else {
-      //     Alert.alert("Error", "Invalid details");
-      //   }
-      // } else {
-      //   Alert.alert("Error", "User does not exist");
-      // }
+      try {
+        AsyncStorage.setItem("user", JSON.stringify(inputs));
+        navigation.navigate(Screens.LoginScreen);
+      } catch (error) {
+        Alert.alert("Error", "something went wrong");
+      }
     }, 3000);
   };
 
@@ -100,14 +88,14 @@ function RegisterScreen({ navigation }) {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar
-        backgroundColor="#efefef"
-        barStyle={StatusBarColor.dark}
-      />
+      <StatusBar backgroundColor="#efefef" barStyle={StatusBarColor.dark} />
 
       <ScrollView>
         <Loader visible={loading} />
         <View style={styles.welcome}>
+
+          <Icon style={styles.icon} name="pagelines" />
+
           <Text
             style={{
               fontWeight: "bold",
@@ -193,7 +181,7 @@ const styles = StyleSheet.create({
   },
   welcome: {
     margin: 20,
-    paddingTop: 50,
+    paddingTop: 5,
   },
   text: {
     fontWeight: "bold",
@@ -202,6 +190,11 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 15,
     padding: 10,
+  },
+  icon: {
+    color: Colors.secondary,
+    fontSize: 50,
+    textAlign: "center",
   },
 });
 export default RegisterScreen;

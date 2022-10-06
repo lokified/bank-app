@@ -7,6 +7,7 @@ import {
   Keyboard,
   Platform,
   StatusBar,
+  Alert,
 } from "react-native";
 import { Colors } from "../../config/Colors";
 import { Screens } from "../../config/Screens";
@@ -16,6 +17,7 @@ import Input from "../components/Input";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Loader from "../components/Loader";
 import { StatusBarColor } from "../../config/StatusbarColor";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 function LoginScreen({ navigation }) {
   const [inputs, setInputs] = useState({
@@ -49,29 +51,28 @@ function LoginScreen({ navigation }) {
     setloading(true);
 
     setTimeout(async () => {
-      navigation.navigate(Screens.DashboardScreen);
 
       setloading(false);
-      // let userData = await AsyncStorage.getItem("user");
+      let userData = await AsyncStorage.getItem("user");
 
-      // if (userData) {
-      //   userData = JSON.parse(userData);
+      if (userData) {
+        userData = JSON.parse(userData);
 
-      //   if (
-      //     inputs.accountNumber == userData.email &&
-      //     inputs.pin == userData.password
-      //   ) {
-      //     AsyncStorage.setItem(
-      //       "user",
-      //       JSON.stringify({ ...userData, loggedIn: true })
-      //     );
-      //     navigation.navigate(Screens.DashboardScreen);
-      //   } else {
-      //     Alert.alert("Error", "Invalid details");
-      //   }
-      // } else {
-      //   Alert.alert("Error", "User does not exist");
-      // }
+        if (
+          inputs.accountNumber == userData.accountNumber &&
+          inputs.pin == userData.pin
+        ) {
+          AsyncStorage.setItem(
+            "user",
+            JSON.stringify({ ...userData, loggedIn: true })
+          );
+          navigation.navigate(Screens.DashboardScreen);
+        } else {
+          Alert.alert("Error", "Invalid details");
+        }
+      } else {
+        Alert.alert("Error", "User does not exist");
+      }
     }, 3000);
   };
 
@@ -88,6 +89,9 @@ function LoginScreen({ navigation }) {
       <StatusBar backgroundColor="#efefef" barStyle={StatusBarColor.dark} />
       <Loader visible={loading} />
       <View style={styles.welcome}>
+
+        <Icon style={styles.icon} name="pagelines" />
+
         <Text
           style={{
             fontWeight: "bold",
@@ -164,8 +168,13 @@ const styles = StyleSheet.create({
   },
   welcome: {
     margin: 20,
-    paddingTop: 50,
+    paddingTop: 5,
   },
+  icon: {
+    color: Colors.secondary,
+    fontSize: 50,
+    textAlign: 'center'
+  }
 });
 
 export default LoginScreen;

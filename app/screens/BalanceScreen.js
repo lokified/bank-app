@@ -1,10 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import { View, StyleSheet, SafeAreaView, Text, StatusBar } from "react-native";
 import { Colors } from "../../config/Colors";
 import { StatusBarColor } from "../../config/StatusbarColor";
 import Button from "../components/Button";
 
-function BalanceScreen({ navigation }) {
+function BalanceScreen({ route, navigation }) {
+
+  const {firstName, lastName} = route.params;
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar
@@ -14,30 +17,29 @@ function BalanceScreen({ navigation }) {
       <View style={styles.balWrapper}>
         <View style={styles.userNameContainer}>
           <View style={styles.userImage}>
-            <Text style={{ color: Colors.white }}>SO</Text>
+            <Text style={{ color: Colors.white }}>
+              {firstName[0]}{lastName[0]}
+            </Text>
           </View>
-          <Text
-            style={styles.text}
-          >
-            Sheldon Okware
+          <Text style={styles.text}>
+            {firstName} {lastName}
           </Text>
         </View>
 
         <View style={styles.accountContainer}>
           <Text>Account Number</Text>
-          <Text
-            style={styles.text}
-          >
-            0123456789
-          </Text>
+          <Text style={styles.text}>0123456789</Text>
         </View>
 
         <View style={styles.balanceContainer}>
           <Text>My Balance</Text>
           <Text
-            style={[ styles.text,{
-              fontSize: 30
-            }]}
+            style={[
+              styles.text,
+              {
+                fontSize: 30,
+              },
+            ]}
           >
             10,000
           </Text>

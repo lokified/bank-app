@@ -9,7 +9,7 @@ function Loader({ visible }) {
       <AnimatedLoader
         visible={visible}
         overlayColor="rgba(255,255,255,0.75)"
-        source={require("../assets/animation/loading.json")}
+        source={require("../assets/animation/round-loader.json")}
         animationStyle={styles.lottie}
         speed={1}
       >
@@ -20,8 +20,8 @@ function Loader({ visible }) {
 
 const styles = StyleSheet.create({
   lottie: {
-    width: 500,
-    height: 500
+    width: 100,
+    height: 100
   },
 });
 

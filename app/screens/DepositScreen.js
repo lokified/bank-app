@@ -13,12 +13,16 @@ import { Colors } from "../../config/Colors";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import { Screens } from "../../config/Screens";
+import PopUp from "../components/PopUp";
 
 function DepositScreen({ navigation }) {
   const [inputs, setInputs] = useState({
     amount: "",
   });
   const [errors, setErrors] = useState({});
+
+  const [modalVisible, setModalVisible] = useState(false);
+
 
   const deposit = () => {
     let valid = true;
@@ -29,7 +33,8 @@ function DepositScreen({ navigation }) {
     }
 
     if (valid) {
-      navigation.navigate(Screens.DashboardScreen);
+      setModalVisible(true);
+      
     }
   };
 
@@ -47,6 +52,13 @@ function DepositScreen({ navigation }) {
         backgroundColor={Colors.white}
         barStyle={StatusBarColor.dark}
       />
+
+      <PopUp
+        modalVisible={modalVisible}
+        onPress={() => navigation.navigate(Screens.DashboardScreen)}
+        text="Deposit is Successful"
+      />
+
       <View style={styles.wrapper}>
         <Text
           style={{

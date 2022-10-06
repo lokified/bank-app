@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 import {
   View,
@@ -16,7 +16,34 @@ import { StatusBarColor } from "../../config/StatusbarColor";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Action from "../components/Action";
 
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 function DashboardScreen({ navigation }) {
+
+  const [userDetails, setUserDetails] = useState();
+
+  useEffect(() => {
+    getUserDetails();
+  }, []);
+
+  const getUserDetails = async () => {
+    const userData = await AsyncStorage.getItem("user");
+
+    if (userData) {
+      setUserDetails(JSON.parse(userData));
+    }
+  };
+
+  const logout = () => {
+    AsyncStorage.setItem(
+      "user",
+      JSON.stringify({ ...userDetails, loggedIn: false })
+    );
+
+    navigation.navigate(Screens.LoginScreen);
+  };
+
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar
@@ -26,9 +53,9 @@ function DashboardScreen({ navigation }) {
       <ScrollView>
         <View style={styles.headerContainer}>
           <Text style={[styles.headerText, { marginTop: 30 }]}>
-            Welcome back,{" "}
+            Welcome back,
           </Text>
-          <Text style={styles.headerText}>sheldon </Text>
+          <Text style={styles.headerText}>{userDetails?.firstName}</Text>
           <TouchableOpacity activeOpacity={0.5} style={styles.account}>
             <Text style={styles.accountText}>Account number</Text>
             <Text style={styles.accountText}>01......89</Text>
@@ -49,7 +76,10 @@ function DashboardScreen({ navigation }) {
           <TouchableOpacity
             activeOpacity={0.7}
             style={styles.actionContainer}
-            onPress={() => navigation.navigate(Screens.BalanceScreen)}
+            onPress={() => navigation.navigate(Screens.BalanceScreen, {
+              firstName: userDetails?.firstName,
+              lastName: userDetails?.lastName
+            })}
           >
             <Icon style={styles.icon} name="money" />
             <Text style={styles.iconText}>Balance</Text>

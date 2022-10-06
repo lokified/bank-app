@@ -1,13 +1,19 @@
-import React, {useState} from "react";
-import { View, StyleSheet, SafeAreaView, Text, StatusBar } from "react-native";
+import React, { useState } from "react";
+import {
+  View,
+  StyleSheet,
+  SafeAreaView,
+  Text,
+  StatusBar,
+} from "react-native";
 import { Colors } from "../../config/Colors";
 import { Screens } from "../../config/Screens";
 import { StatusBarColor } from "../../config/StatusbarColor";
 import Button from "../components/Button";
 import Input from "../components/Input";
+import PopUp from "../components/PopUp";
 
 function ChangePinScreen({ navigation }) {
-
   const [inputs, setInputs] = useState({
     oldPin: "",
     newPin: "",
@@ -16,8 +22,9 @@ function ChangePinScreen({ navigation }) {
 
   const [errors, setErrors] = useState({});
 
-  const update = () => {
+  const [modalVisible, setModalVisible] = useState(false);
 
+  const update = () => {
     let valid = true;
 
     if (!inputs.oldPin) {
@@ -33,16 +40,15 @@ function ChangePinScreen({ navigation }) {
     if (!inputs.confirmPin) {
       handleError("Please confirm your new pin", "confirmPin");
       valid = false;
-    }
-    else if(inputs.confirmPin != inputs.newPin) {
+    } else if (inputs.confirmPin != inputs.newPin) {
       handleError("pin does not match", "confirmPin");
       valid = false;
     }
 
-    if(valid) {
-      navigation.navigate(Screens.DashboardScreen)
+    if (valid) {
+      setModalVisible(true);
     }
-  }
+  };
 
   const handleOnChange = (text, input) => {
     setInputs((prevState) => ({ ...prevState, [input]: text }));
@@ -58,6 +64,13 @@ function ChangePinScreen({ navigation }) {
         backgroundColor={Colors.white}
         barStyle={StatusBarColor.dark}
       />
+
+      <PopUp
+        modalVisible={modalVisible}
+        onPress={() => navigation.navigate(Screens.DashboardScreen)}
+        text="Updated Successfully"
+      />
+
       <View style={styles.pinContainer}>
         <Text style={styles.text}>Set your new pin</Text>
         <View>
