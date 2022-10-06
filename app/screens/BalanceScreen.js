@@ -17,11 +17,7 @@ function BalanceScreen({ navigation }) {
             <Text style={{ color: Colors.white }}>SO</Text>
           </View>
           <Text
-            style={{
-              color: Colors.secondary,
-              fontSize: 20,
-              fontWeight: "bold",
-            }}
+            style={styles.text}
           >
             Sheldon Okware
           </Text>
@@ -30,11 +26,7 @@ function BalanceScreen({ navigation }) {
         <View style={styles.accountContainer}>
           <Text>Account Number</Text>
           <Text
-            style={{
-              fontSize: 20,
-              color: Colors.secondary,
-              fontWeight: "bold",
-            }}
+            style={styles.text}
           >
             0123456789
           </Text>
@@ -43,11 +35,9 @@ function BalanceScreen({ navigation }) {
         <View style={styles.balanceContainer}>
           <Text>My Balance</Text>
           <Text
-            style={{
-              fontSize: 25,
-              color: Colors.secondary,
-              fontWeight: "bold",
-            }}
+            style={[ styles.text,{
+              fontSize: 30
+            }]}
           >
             10,000
           </Text>
@@ -115,6 +105,11 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     justifyContent: "space-between",
     alignItems: "center",
+  },
+  text: {
+    fontSize: 20,
+    color: Colors.secondary,
+    fontWeight: "bold",
   },
 });
 
