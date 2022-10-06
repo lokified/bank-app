@@ -30,8 +30,8 @@ function DashboardScreen({ navigation }) {
           </Text>
           <Text style={styles.headerText}>sheldon </Text>
           <TouchableOpacity activeOpacity={0.5} style={styles.account}>
-            <Text style={styles.accountText}>Account Balance</Text>
-            <Text style={styles.accountText}>ksh10,000</Text>
+            <Text style={styles.accountText}>Account number</Text>
+            <Text style={styles.accountText}>01......89</Text>
           </TouchableOpacity>
         </View>
 
@@ -98,12 +98,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     paddingVertical: 20,
     borderBottomWidth: 0.5,
-    borderTopWidth: 0.4,
     marginTop: 30,
     borderColor: "#2d61e3",
   },
   accountText: {
-    color: Colors.white,
+    color: "#efefef",
     marginHorizontal: 8,
     fontSize: 15,
   },

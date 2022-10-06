@@ -16,7 +16,7 @@ function Action({actionText, actionIcon, onPress = () => {}}) {
         >
           <Icon
             name={actionIcon}
-            style={{ fontSize: 18, color: Colors.secondary, marginRight: 8 }}
+            style={{ fontSize: 18, color: Colors.secondary, marginRight: 12 }}
           />
           <Text style={[styles.actionStyle, { fontSize: 18 }]}>
             {actionText}
@@ -33,7 +33,7 @@ function Action({actionText, actionIcon, onPress = () => {}}) {
 
 const styles = StyleSheet.create({
   otherAction: {
-    paddingHorizontal: 8,
+    paddingHorizontal: 12,
     paddingVertical: 25,
     backgroundColor: "#e4e6eb",
     borderRadius: 3,

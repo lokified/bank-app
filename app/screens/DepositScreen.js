@@ -60,7 +60,7 @@ function DepositScreen({ navigation }) {
 
         <View style={styles.userContainer}>
           <View style={styles.userImage}>
-            <Text style={{ color: Colors.white }}>AB</Text>
+            <Text style={{ color: Colors.white }}>AN</Text>
           </View>
           <View>
             <Text
@@ -70,7 +70,7 @@ function DepositScreen({ navigation }) {
                 fontSize: 16,
               }}
             >
-              My Account
+              Account no.
             </Text>
             <Text
               style={{
@@ -78,7 +78,7 @@ function DepositScreen({ navigation }) {
                 fontSize: 12,
               }}
             >
-              ksh.10,000
+              0123456789
             </Text>
           </View>
         </View>
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.secondary,
     padding: 10,
     borderRadius: 100,
-    width: 36,
+    width: 37,
     marginRight: 8,
   },
 });
